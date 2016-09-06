@@ -1,0 +1,7 @@
+
+LIFE GAME
+This emurates the process of life.
+Usage:
+	./lifegame < field.txt
+You can execute this by a redirection.
+

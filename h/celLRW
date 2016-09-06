@@ -1,0 +1,4 @@
+#pragma once
+inline bool is_outOfRange(int param);
+int cellRead(int x, int y);
+void cellWrite(int x, int y, int content);

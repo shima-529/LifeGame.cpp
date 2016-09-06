@@ -1,0 +1,6 @@
+#pragma once
+CELL **field;
+int N;
+int kaisuu;
+int delayTime;
+int dataSet;

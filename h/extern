@@ -1,0 +1,5 @@
+extern CELL **field;
+extern int N;
+extern int kaisuu;
+extern int delayTime;
+extern int dataSet;
