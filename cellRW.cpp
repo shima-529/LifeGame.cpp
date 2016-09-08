@@ -5,7 +5,7 @@
  */
 #include "h/init"
 #include "h/extern"
-const int NOT_FOUND = -1;
+// const int NOT_FOUND = -1;
 
 template<typename T>
 inline bool is_outOfRange(T param) {
