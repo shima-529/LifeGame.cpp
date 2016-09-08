@@ -1,4 +1,7 @@
 #pragma once
-inline bool is_outOfRange(int param);
-int cellRead(int x, int y);
-void cellWrite(int x, int y, int content);
+template<typename T>
+inline bool is_outOfRange(T param);
+template<typename T>
+inline bool is_outOfRange(T p1, T p2);
+bool cellRead(int x, int y);
+void cellWrite(int x, int y, bool nextStatus);
