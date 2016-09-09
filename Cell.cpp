@@ -4,30 +4,30 @@
  * 
  */
 #include "h/Cell"
-CELL::CELL() {
+Cell::Cell() {
 	status = false;
 	nextStatus = false;
 }
-bool CELL::getStatus() {
+bool Cell::getStatus() {
 	return status;
 }
-bool CELL::getNextStatus() {
+bool Cell::getNextStatus() {
 	return nextStatus;
 }
-/* CELL *getNeighbor(int idx) { */
+/* Cell *getNeighbor(int idx) { */
 /* 	return neighbor[idx]; */
 /* } */
-void CELL::setStatus(bool param) {
+void Cell::setStatus(bool param) {
 	status = param;
 }
-void CELL::setNextStatus(bool p) {
+void Cell::setNextStatus(bool p) {
 	nextStatus = p;
 }
-/* void CELL::setNeighbor(int idx, CELL *dest) { */
+/* void Cell::setNeighbor(int idx, Cell *dest) { */
 /* 	neighbor[idx] = dest; */
 /* } */
 
-void CELL::goToNextStep() {
+void Cell::goToNextStep() {
 	status = nextStatus;
 	nextStatus = false;
 }

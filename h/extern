@@ -1,4 +1,4 @@
-extern CELL **field;
+extern Cell **field;
 extern int N;
 extern int kaisuu;
 extern int delayTime;

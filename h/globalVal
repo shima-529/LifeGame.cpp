@@ -1,5 +1,5 @@
 #pragma once
-CELL **field;
+Cell **field;
 int N;
 int kaisuu;
 int delayTime;

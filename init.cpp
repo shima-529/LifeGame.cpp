@@ -22,9 +22,9 @@ void readHeaderSettings() {
 }
 
 void allocateArrays() {
-	field = new CELL *[N];
+	field = new Cell *[N];
 	for(int i=0; i<N; i++) {
-		field[i] = new CELL[N];
+		field[i] = new Cell[N];
 	}
 }
 

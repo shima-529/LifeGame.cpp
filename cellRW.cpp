@@ -3,7 +3,8 @@
  * This includes R/W and the discriminant func(is_outOfRange).
  * 
  */
-#include "h/init"
+// #include "h/init"
+#include "h/Cell"
 #include "h/extern"
 // const int NOT_FOUND = -1;
 

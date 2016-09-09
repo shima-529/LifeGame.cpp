@@ -1,18 +1,18 @@
 #pragma once
-class CELL {
+class Cell {
 	private:
 		bool status;
 		bool nextStatus;
-		/* CELL *neighbor[8]; */
+		/* Cell *neighbor[8]; */
 
 	public:
-		CELL();
+		Cell();
 		bool getStatus();
 		bool getNextStatus();
-		/* CELL *getNeighbor(int idx); */
+		/* Cell *getNeighbor(int idx); */
 		void setStatus(bool param);
 		void setNextStatus(bool p);
-		/* void setNeighbor(int idx, CELL *dest); */
+		/* void setNeighbor(int idx, Cell *dest); */
 
 		void goToNextStep();
 };
