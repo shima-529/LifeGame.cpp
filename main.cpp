@@ -10,15 +10,24 @@
 #include "h/globalVal"
 #include "h/system"
 #include "h/cellRW"
+
+using std::string;
+using std::to_string;
+
 const int NOT_FOUND = -1;
-const std::string TO_BACKWARD_ONE_LINE = "\033[A";
+const string TO_BACKWARD_ONE_LINE = "\033[A";
+
+enum ANSI_Color {
+	BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE,
+};
 
 void LifeSearch();
 inline void LifeChange();
-void LifePrint(bool isSq);
+void LifePrint(bool isColor);
+string convertToPrintText(Cell& target, bool isColor);
 
 int main(int argc, char **argv) {
-	std::vector<std::string> v(argv, argv + argc);
+	std::vector<string> v(argv, argv + argc);
 	std::cout << "==========================================" << std::endl; //{{{
 	std::cout << "             L I F E  G A M E             " << std::endl;
 	std::cout << " Please input field length and loop times." << std::endl;
@@ -30,14 +39,14 @@ int main(int argc, char **argv) {
 	} //}}}
 	readHeaderSettings();
 	allocateArrays();
+
 	readField();
 	std::cout << "Start:" << std::endl;
-	LifePrint(false);
+	LifePrint(useColor);
 	sleep(1);
 
 	for(int i=1; i<=kaisuu; i++) {
-		if( argc == 1 )		usleep(delayTime * 1000);
-		else if( v[1].find("man") != NOT_FOUND )	getchar();
+		usleep(delayTime * 1000);
 		if( shouldClearScreen ) {
 			for(int j=0; j<=N; j++) {
 				std::cout << TO_BACKWARD_ONE_LINE;
@@ -46,7 +55,7 @@ int main(int argc, char **argv) {
 		std::cout << i << "     " << std::endl;
 		LifeSearch();
 		LifeChange();
-		LifePrint(false);
+		LifePrint(useColor);
 	}
 
 	delete[](field);
@@ -57,9 +66,9 @@ void LifeSearch() {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
 			int countAlive = 0;
-			countAlive	= cellRead(i-1, j-1) + cellRead(i, j-1) + cellRead(i+1, j-1)
-						+ cellRead(i-1, j) + cellRead(i+1, j)
-						+ cellRead(i-1, j+1) + cellRead(i, j+1) + cellRead(i+1, j+1);
+			countAlive	= cellRead(i-1, j-1) + cellRead(i  , j-1) + cellRead(i+1, j-1)
+						+ cellRead(i-1, j  ) + cellRead(i+1, j  )
+						+ cellRead(i-1, j+1) + cellRead(i  , j+1) + cellRead(i+1, j+1);
 			if( field[i][j].getStatus() == true ) {
 				if( countAlive == 2 || countAlive == 3 )
 					field[i][j].setNextStatus(true);
@@ -79,16 +88,18 @@ inline void LifeChange() {
 	}
 }
 
-void LifePrint(bool isSq) {
+void LifePrint(bool isColor) {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
-			if( isSq == false ) {
-				std::cout << (int)(field[i][j].getStatus()) << " ";
-			}else{
-				if( field[i][j].getStatus() == 0 )	printf("□");
-				else	printf("■");
-			}
+			std::cout << convertToPrintText(field[i][j], isColor) << " ";
 		}
-		std::cout << std::endl;
+		std::cout << "\033[49m" << std::endl;
 	}
+}
+
+string convertToPrintText(Cell& target, bool isColor) {
+	if( !isColor ) return to_string(target.getStatus());
+
+	if( target.getStatus() )	return "\033[4" + to_string(BLACK) + "m" +  " ";
+	else	return "\033[4" + to_string(WHITE) + "m" + " ";
 }

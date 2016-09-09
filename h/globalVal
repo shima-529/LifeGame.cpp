@@ -5,3 +5,4 @@ int kaisuu;
 int delayTime;
 int dataSet;
 bool shouldClearScreen;
+bool useColor;

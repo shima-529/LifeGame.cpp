@@ -4,3 +4,4 @@ extern int kaisuu;
 extern int delayTime;
 extern int dataSet;
 extern bool shouldClearScreen;
+extern bool useColor;
