@@ -37,7 +37,12 @@ int main(int argc, char **argv) {
 	for(int i=1; i<=kaisuu; i++) {
 		if( argc == 1 )		usleep(delayTime * 1000);
 		else if( v[1].find("man") != NOT_FOUND )	getchar();
-		std::cout << i << " " << std::endl;
+		if( shouldClearScreen ) {
+			for(int j=0; j<=N; j++) {
+				std::cout << "\033[A";
+			}
+		}
+		std::cout << i << "     " << std::endl;
 		LifeSearch();
 		LifeChange();
 		LifePrint(false);

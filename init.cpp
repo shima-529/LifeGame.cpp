@@ -11,7 +11,7 @@
 
 void readHeaderSettings() {
 	int contZeroCount = 0;
-	std::cin >> N >> kaisuu >> delayTime >> dataSet;
+	std::cin >> N >> kaisuu >> delayTime >> dataSet >> shouldClearScreen;
 	while( contZeroCount < 2 ) {	// check whether '0' is set 2 times continuously, i.e. start of the input of field
 		std::string streamLine;
 		streamLine.reserve(100);
