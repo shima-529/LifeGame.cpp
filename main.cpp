@@ -11,6 +11,7 @@
 #include "h/system"
 #include "h/cellRW"
 const int NOT_FOUND = -1;
+const std::string TO_BACKWARD_ONE_LINE = "\033[A";
 
 void LifeSearch();
 inline void LifeChange();
@@ -39,7 +40,7 @@ int main(int argc, char **argv) {
 		else if( v[1].find("man") != NOT_FOUND )	getchar();
 		if( shouldClearScreen ) {
 			for(int j=0; j<=N; j++) {
-				std::cout << "\033[A";
+				std::cout << TO_BACKWARD_ONE_LINE;
 			}
 		}
 		std::cout << i << "     " << std::endl;
