@@ -13,6 +13,9 @@ love:
 clean:
 	$(RM) $(OBJS)
 
+allclean:
+	$(RM) $(OBJS) $(PROG_NAME)
+
 main.o: Cell.o init.o cellRW.o
 
 Cell.o: Cell.cpp
