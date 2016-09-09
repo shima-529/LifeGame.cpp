@@ -3,5 +3,5 @@ template<typename T>
 inline bool is_outOfRange(T param);
 template<typename T>
 inline bool is_outOfRange(T p1, T p2);
-bool cellRead(int x, int y);
-void cellWrite(int x, int y, bool nextStatus);
+bool cellRead(const int x, const int y);
+void cellWrite(const int x, const int y, bool nextStatus);
