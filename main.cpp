@@ -24,8 +24,8 @@ enum ANSI_Color {
 void LifeSearch();
 inline void LifeChange();
 void LifePrint(bool isColor);
-string convertToPrintText(Cell& target, bool isColor);
-void CursorBack();
+string convertToPrintText(Cell target, bool isColor);
+inline void CursorBack();
 
 int main(int argc, char **argv) {
 	std::vector<string> v(argv, argv + argc);
@@ -92,14 +92,14 @@ void LifePrint(bool isColor) {
 	}
 }
 
-string convertToPrintText(Cell& target, bool isColor) {
+string convertToPrintText(Cell target, bool isColor) {
 	if( !isColor ) return to_string(target.getStatus());
 
 	if( target.getStatus() )	return "\033[4" + to_string(BLACK) + "m" +  " ";
 	else	return "\033[4" + to_string(WHITE) + "m" + " ";
 }
 
-void CursorBack() {
+inline void CursorBack() {
 	for(int i=0; i<=N; i++) {
 			std::cout << TO_BACKWARD_ONE_LINE;
 		}
