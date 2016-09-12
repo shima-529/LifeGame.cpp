@@ -32,7 +32,6 @@ void readField() {
 	for(int i=0; i<dataSet; i++) {
 		int x_setTrue, y_setTrue;
 		std::cin >> x_setTrue >> y_setTrue;
-		// TODO: エラー処理を書く(outOfRange)
 		field[x_setTrue][y_setTrue].setStatus(true);
 	}
 }

@@ -57,6 +57,7 @@ int main(int argc, char **argv) {
 	}
 
 	delete[](field);
+	return 0;
 }
 
 // The core part of this program.
