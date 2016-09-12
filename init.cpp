@@ -5,6 +5,7 @@
  */
 #include <iostream>
 #include <string>
+#include <vector>
 #include "h/init"
 #include "h/extern"
 #include "h/Cell"
@@ -22,9 +23,9 @@ void readHeaderSettings() {
 }
 
 void allocateArrays() {
-	field = new Cell *[N];
+	field.resize(N);
 	for(int i=0; i<N; i++) {
-		field[i] = new Cell[N];
+		field.at(i).resize(N);
 	}
 }
 
@@ -32,6 +33,6 @@ void readField() {
 	for(int i=0; i<dataSet; i++) {
 		int x_setTrue, y_setTrue;
 		std::cin >> x_setTrue >> y_setTrue;
-		field[x_setTrue][y_setTrue].setStatus(true);
+		field.at(x_setTrue).at(y_setTrue).setStatus(true);
 	}
 }

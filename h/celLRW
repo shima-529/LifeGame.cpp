@@ -1,7 +1,3 @@
 #pragma once
-template<typename T>
-inline bool is_outOfRange(T param);
-template<typename T>
-inline bool is_outOfRange(T p1, T p2);
 bool cellRead(const int x, const int y);
 void cellWrite(const int x, const int y, bool nextStatus);

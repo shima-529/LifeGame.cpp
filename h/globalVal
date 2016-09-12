@@ -1,5 +1,8 @@
 #pragma once
-Cell **field;
+#include <vector>
+#include "Cell"
+// Cell **field;
+std::vector< std::vector<Cell> > field;
 int N;
 int kaisuu;
 int delayTime;

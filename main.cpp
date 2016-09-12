@@ -56,7 +56,6 @@ int main(int argc, char **argv) {
 		LifePrint(shouldUseColor);
 	}
 
-	delete[](field);
 	return 0;
 }
 
@@ -68,10 +67,10 @@ void LifeSearch() {
 			countAlive	= cellRead(i-1, j-1) + cellRead(i  , j-1) + cellRead(i+1, j-1)
 						+ cellRead(i-1, j  ) + cellRead(i+1, j  )
 						+ cellRead(i-1, j+1) + cellRead(i  , j+1) + cellRead(i+1, j+1);
-			if( field[i][j].getStatus() == true && (countAlive == 2 || countAlive == 3) )
-				field[i][j].setNextStatus(true);
+			if( field.at(i).at(j).getStatus() == true && (countAlive == 2 || countAlive == 3) )
+				field.at(i).at(j).setNextStatus(true);
 			else if( field[i][j].getStatus() == false && countAlive == 3) 
-				field[i][j].setNextStatus(true);
+				field.at(i).at(j).setNextStatus(true);
 		}
 	}
 }
@@ -79,7 +78,7 @@ void LifeSearch() {
 inline void LifeChange() {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
-			field[i][j].goToNextStep();
+			field.at(i).at(j).goToNextStep();
 		}
 	}
 }
@@ -87,7 +86,7 @@ inline void LifeChange() {
 void LifePrint(bool isColor) {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
-			std::cout << convertToPrintText(field[i][j], isColor) << " ";
+			std::cout << convertToPrintText(field.at(i).at(j), isColor) << " ";
 		}
 		std::cout << "\033[49m" << std::endl;
 	}
