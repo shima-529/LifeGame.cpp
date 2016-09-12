@@ -69,7 +69,7 @@ void LifeSearch() {
 						+ cellRead(i-1, j+1) + cellRead(i  , j+1) + cellRead(i+1, j+1);
 			if( field.at(i).at(j).getStatus() == true && (countAlive == 2 || countAlive == 3) )
 				field.at(i).at(j).setNextStatus(true);
-			else if( field[i][j].getStatus() == false && countAlive == 3) 
+			else if( field.at(i).at(j).getStatus() == false && countAlive == 3) 
 				field.at(i).at(j).setNextStatus(true);
 		}
 	}
@@ -100,7 +100,7 @@ string convertToPrintText(Cell& target, bool isColor) {
 }
 
 void CursorBack() {
-	for(int j=0; j<=N; j++) {
+	for(int i=0; i<=N; i++) {
 			std::cout << TO_BACKWARD_ONE_LINE;
 		}
 }
