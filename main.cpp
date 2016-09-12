@@ -25,6 +25,7 @@ void LifeSearch();
 inline void LifeChange();
 void LifePrint(bool isColor);
 string convertToPrintText(Cell& target, bool isColor);
+void CursorBack();
 
 int main(int argc, char **argv) {
 	std::vector<string> v(argv, argv + argc);
@@ -42,20 +43,17 @@ int main(int argc, char **argv) {
 
 	readField();
 	std::cout << "Start:" << std::endl;
-	LifePrint(useColor);
+	LifePrint(shouldUseColor);
 	sleep(1);
 
 	for(int i=1; i<=kaisuu; i++) {
 		usleep(delayTime * 1000);
-		if( shouldClearScreen ) {
-			for(int j=0; j<=N; j++) {
-				std::cout << TO_BACKWARD_ONE_LINE;
-			}
-		}
+		if( shouldClearScreen )
+			CursorBack();
 		std::cout << i << "     " << std::endl;
 		LifeSearch();
 		LifeChange();
-		LifePrint(useColor);
+		LifePrint(shouldUseColor);
 	}
 
 	delete[](field);
@@ -69,13 +67,10 @@ void LifeSearch() {
 			countAlive	= cellRead(i-1, j-1) + cellRead(i  , j-1) + cellRead(i+1, j-1)
 						+ cellRead(i-1, j  ) + cellRead(i+1, j  )
 						+ cellRead(i-1, j+1) + cellRead(i  , j+1) + cellRead(i+1, j+1);
-			if( field[i][j].getStatus() == true ) {
-				if( countAlive == 2 || countAlive == 3 )
-					field[i][j].setNextStatus(true);
-			}else if( field[i][j].getStatus() == false ) {
-				if( countAlive == 3 )
-					field[i][j].setNextStatus(true);
-			}
+			if( field[i][j].getStatus() == true && (countAlive == 2 || countAlive == 3) )
+				field[i][j].setNextStatus(true);
+			else if( field[i][j].getStatus() == false && countAlive == 3) 
+				field[i][j].setNextStatus(true);
 		}
 	}
 }
@@ -102,4 +97,10 @@ string convertToPrintText(Cell& target, bool isColor) {
 
 	if( target.getStatus() )	return "\033[4" + to_string(BLACK) + "m" +  " ";
 	else	return "\033[4" + to_string(WHITE) + "m" + " ";
+}
+
+void CursorBack() {
+	for(int j=0; j<=N; j++) {
+			std::cout << TO_BACKWARD_ONE_LINE;
+		}
 }
