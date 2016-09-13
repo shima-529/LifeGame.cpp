@@ -1,4 +1,3 @@
-// extern Cell **field;
 extern std::vector< std::vector<Cell> > field;
 extern int N;
 extern int kaisuu;
@@ -6,3 +5,5 @@ extern int delayTime;
 extern int dataSet;
 extern bool shouldClearScreen;
 extern bool shouldUseColor;
+
+extern const int NOT_FOUND;

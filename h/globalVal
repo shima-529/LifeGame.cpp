@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "Cell"
-// Cell **field;
 std::vector< std::vector<Cell> > field;
 int N;
 int kaisuu;
@@ -9,3 +8,5 @@ int delayTime;
 int dataSet;
 bool shouldClearScreen;
 bool shouldUseColor;
+
+const int NOT_FOUND = -1;
