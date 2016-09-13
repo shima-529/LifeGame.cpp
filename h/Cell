@@ -15,4 +15,5 @@ class Cell {
 		/* void setNeighbor(int idx, Cell *dest); */
 
 		void goToNextStep();
+		bool compareOwnStatus();
 };

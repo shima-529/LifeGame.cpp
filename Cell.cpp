@@ -31,3 +31,7 @@ void Cell::goToNextStep() {
 	status = nextStatus;
 	nextStatus = false;
 }
+
+bool Cell::compareOwnStatus() {
+	return !(status ^ nextStatus);
+}
