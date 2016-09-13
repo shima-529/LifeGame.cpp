@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "h/Cell"
 #include "h/extern"
-// #include "h/globalVal"
 
 using std::string;
 using std::to_string;

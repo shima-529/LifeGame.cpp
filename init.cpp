@@ -8,7 +8,6 @@
 #include <vector>
 #include "h/init"
 #include "h/extern"
-#include "h/Cell"
 
 void readHeaderSettings() {
 	int contZeroCount = 0;
