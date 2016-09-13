@@ -1,3 +1,4 @@
+#include "Cell"
 extern std::vector< std::vector<Cell> > field;
 extern int N;
 extern int kaisuu;
