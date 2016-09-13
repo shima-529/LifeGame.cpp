@@ -3,25 +3,22 @@
 #include <vector>
 #include "h/extern"
 
-using std::string;
-using std::to_string;
-
 enum class ANSI_Color {
 	BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE,
 };
 
-string convertToPrintText(Cell target, bool isColor) {
+std::string convertToPrintText(Cell target, bool isColor) {
 	if( isColor == false )
-		return to_string(target.getStatus());
+		return std::to_string(target.getStatus());
 
 	if( target.getStatus() == true )
-		return "\033[4" + to_string(static_cast<int>(ANSI_Color::BLACK)) + "m" +  " ";
+		return "\033[4" + std::to_string(static_cast<int>(ANSI_Color::BLACK)) + "m" +  " ";
 	else
-		return "\033[4" + to_string(static_cast<int>(ANSI_Color::WHITE)) + "m" + " ";
+		return "\033[4" + std::to_string(static_cast<int>(ANSI_Color::WHITE)) + "m" + " ";
 }
 
-void LifePrint(string str, bool isColor, bool isCurBack) {
-	const static string TO_BACKWARD_ONE_LINE = "\033[A";
+void LifePrint(std::string str, bool isColor, bool isCurBack) {
+	const static std::string TO_BACKWARD_ONE_LINE = "\033[A";
 	if( isCurBack )
 		for(int i=0; i<N+1; i++) {
 			std::cout << TO_BACKWARD_ONE_LINE;

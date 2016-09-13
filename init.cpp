@@ -6,15 +6,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "h/init"
 #include "h/extern"
 
 void readHeaderSettings() {
 	int contZeroCount = 0;
 	std::cin >> N >> repeatNum >> delayTime >> dataSet >> shouldClearScreen >> shouldUseColor;
-	while( contZeroCount < 2 ) {	// check whether '0' is set 2 times continuously, i.e. start of the input of field
+	while( contZeroCount != 2 ) {	// check whether '0' is set 2 times continuously, i.e. start of the input of field
 		std::string streamLine;
-		streamLine.reserve(100);
 		std::cin >> streamLine;
 		if( streamLine[0] == '0' ) contZeroCount++;
 		else	contZeroCount = 0;
@@ -23,9 +21,8 @@ void readHeaderSettings() {
 
 void allocateArrays() {
 	field.resize(N);
-	for(int i=0; i<N; i++) {
+	for(int i=0; i<N; i++)
 		field.at(i).resize(N);
-	}
 }
 
 void readFieldInfo() {
