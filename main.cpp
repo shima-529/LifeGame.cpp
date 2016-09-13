@@ -16,7 +16,7 @@ using std::string;
 using std::to_string;
 
 bool isAllStatusSame();
-void iterateChange_setToNextStatus();
+void iterateChange_storeAsNextStatus();
 int countAliveNumAround(int x, int y);
 inline void applyChange();
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 	sleep(1);
 	// Main Loop
 	for(int i=1; i<=repeatNum; i++) {
-		iterateChange_setToNextStatus();
+		iterateChange_storeAsNextStatus();
 		if( isAllStatusSame() ) {
 			std::cout << "No more changes. Stop." << std::endl;
 			break;
@@ -59,7 +59,7 @@ bool isAllStatusSame() {
 }
 
 // The core part of this program.
-void iterateChange_setToNextStatus() {
+void iterateChange_storeAsNextStatus() {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
 			int countAlive = countAliveNumAround(i, j);
