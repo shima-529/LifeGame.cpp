@@ -7,13 +7,17 @@
 #include <string>
 #include <vector>
 #include <unistd.h>
+#include <signal.h>
 #include "h/init"
 #include "h/globalVal"
 #include "h/cellRW"
 #include "h/lifePrint"
 
-using std::string;
-using std::to_string;
+void signalHandler(int param) {
+	std::cerr << std::endl << "Terminated by Ctrl-C." << std::endl;
+	std::cout << "\033[49m";
+	exit(1);
+}
 
 bool isAllStatusSame();
 void iterateChange_storeAsNextStatus();
@@ -21,6 +25,7 @@ int countAliveNumAround(int x, int y);
 inline void applyChange();
 
 int main(int argc, char **argv) {
+	signal(SIGINT, signalHandler);
 	std::vector<string> v(argv, argv + argc);
 	std::cout << "==========================================" << std::endl; //{{{
 	std::cout << "             L I F E  G A M E             " << std::endl;
@@ -35,13 +40,13 @@ int main(int argc, char **argv) {
 	allocateArrays();
 	readFieldInfo();
 
-	LifePrint("Start", shouldUseColor, false);
+	LifePrint("Start", shouldUseColor);
 	sleep(1);
 	// Main Loop
 	for(int i=1; i<=repeatNum; i++) {
 		iterateChange_storeAsNextStatus();
 		if( isAllStatusSame() ) {
-			std::cout << "No more changes. Stop." << std::endl;
+			std::cout << std::endl << "No more changes. Stop." << std::endl;
 			break;
 		}
 		applyChange();
