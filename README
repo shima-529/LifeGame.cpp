@@ -4,6 +4,7 @@ This emurates the process of life.
 Requirement:
 	- C++11 build environment
 	- Terminal supporting ANSI Color(optional)
+	- ansicon (for Windows users)
 
 Usage:
 	./lifegame < field.txt
