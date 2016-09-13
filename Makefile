@@ -1,5 +1,6 @@
 CC=c++
-CFLAGS=-Wall -g -O2
+# CFLAGS=-Wall -g -O2
+CFLAGS=-std=c++11 -g -O2
 PROG_NAME=lifegame
 OBJS=Cell.o init.o cellRW.o main.o
 
@@ -16,13 +17,14 @@ clean:
 allclean:
 	$(RM) $(OBJS) $(PROG_NAME)
 
-main.o: Cell.o init.o cellRW.o
+main.o: main.cpp
+	$(CC) -c $(CFLAGS) $^
 
 Cell.o: Cell.cpp
-	$(CC) -c $^
+	$(CC) -c $(CFLAGS) $^
 
 init.o: init.cpp
-	$(CC) -c $^
+	$(CC) -c $(CFLAGS) $^
 
 cellRW.o: cellRW.cpp
-	$(CC) -c $^
+	$(CC) -c $(CFLAGS) $^
