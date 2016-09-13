@@ -11,7 +11,7 @@
 
 void readHeaderSettings() {
 	int contZeroCount = 0;
-	std::cin >> N >> kaisuu >> delayTime >> dataSet >> shouldClearScreen >> shouldUseColor;
+	std::cin >> N >> repeatNum >> delayTime >> dataSet >> shouldClearScreen >> shouldUseColor;
 	while( contZeroCount < 2 ) {	// check whether '0' is set 2 times continuously, i.e. start of the input of field
 		std::string streamLine;
 		streamLine.reserve(100);
@@ -28,7 +28,7 @@ void allocateArrays() {
 	}
 }
 
-void readField() {
+void readFieldInfo() {
 	for(int i=0; i<dataSet; i++) {
 		int x_setTrue, y_setTrue;
 		std::cin >> x_setTrue >> y_setTrue;

@@ -3,7 +3,7 @@
 #include "Cell"
 std::vector< std::vector<Cell> > field;
 int N;
-int kaisuu;
+int repeatNum;
 int delayTime;
 int dataSet;
 bool shouldClearScreen;

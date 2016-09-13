@@ -15,10 +15,10 @@
 using std::string;
 using std::to_string;
 
-bool isSameAllStatus();
-void LifeSearch_Set();
-int CountNeighbor(int x, int y);
-inline void LifeChange();
+bool isAllStatusSame();
+void iterateChange_setToNextStatus();
+int countAliveNumAround(int x, int y);
+inline void applyChange();
 
 int main(int argc, char **argv) {
 	std::vector<string> v(argv, argv + argc);
@@ -33,25 +33,25 @@ int main(int argc, char **argv) {
 	} //}}}
 	readHeaderSettings();
 	allocateArrays();
+	readFieldInfo();
 
-	readField();
 	LifePrint("Start", shouldUseColor, false);
 	sleep(1);
 	// Main Loop
-	for(int i=1; i<=kaisuu; i++) {
-		LifeSearch_Set();
-		if( isSameAllStatus() ) {
+	for(int i=1; i<=repeatNum; i++) {
+		iterateChange_setToNextStatus();
+		if( isAllStatusSame() ) {
 			std::cout << "No more changes. Stop." << std::endl;
 			break;
 		}
-		LifeChange();
+		applyChange();
 		LifePrint(to_string(i), shouldUseColor, shouldClearScreen);
 		usleep(delayTime * 1000);
 	}
 	return 0;
 }
 
-bool isSameAllStatus() {
+bool isAllStatusSame() {
 	for(auto iterX: field)
 		for(auto iterY: iterX)
 			if( iterY.compareOwnStatus() == false )	return false;
@@ -59,10 +59,10 @@ bool isSameAllStatus() {
 }
 
 // The core part of this program.
-void LifeSearch_Set() {
+void iterateChange_setToNextStatus() {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
-			int countAlive = CountNeighbor(i, j);
+			int countAlive = countAliveNumAround(i, j);
 			if( field.at(i).at(j).getStatus() == true && (countAlive == 2 || countAlive == 3) )
 				field.at(i).at(j).setNextStatus(true);
 			else if( field.at(i).at(j).getStatus() == false && countAlive == 3) 
@@ -71,19 +71,17 @@ void LifeSearch_Set() {
 	}
 }
 
-int CountNeighbor(int x, int y) {
+int countAliveNumAround(int x, int y) {
 	const static int dx[] = {-1,-1,-1, 0, 0, 1, 1, 1};
 	const static int dy[] = {-1, 0, 1,-1, 1,-1, 0, 1};
 	int ret = 0;
-	for(int index=0; index<8; index++) {
+	for(int index=0; index<8; index++)
 		ret += cellRead(x + dx[index], y + dy[index]);
-	}
 	return ret;
 }
 
-inline void LifeChange() {
+inline void applyChange() {
 	for(auto &iterX: field)
 		for(auto &iterY: iterX)
 			iterY.goToNextStep();
 }
-
