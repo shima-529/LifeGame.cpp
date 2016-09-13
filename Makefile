@@ -1,9 +1,10 @@
-CC=c++
-CFLAGS=-std=c++11 -g -O2
-PROG_NAME=lifegame
-OBJS=Cell.o init.o cellRW.o lifePrint.o main.o
-OBJDIR=./obj
-OBJS_FPATH=$(addprefix $(OBJDIR)/,$(OBJS))
+CC         = c++
+CFLAGS     = -std=c++11 -g -O2
+PROG_NAME  = lifegame
+OBJS       = Cell.o init.o cellRW.o lifePrint.o main.o
+OBJDIR     = ./obj
+OBJS_FPATH = $(addprefix $(OBJDIR)/,$(OBJS))
+INCLUDE    = -I ./h
 
 all: $(OBJS_FPATH)
 	$(CC) $^ -o $(PROG_NAME)
@@ -14,7 +15,7 @@ $(OBJDIR)/%.o: %.cpp
 		mkdir "$(OBJDIR)"; \
 		echo "Created directory: $(OBJDIR)"; \
 		fi
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 .PHONY: love clean allclean
 love:
