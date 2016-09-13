@@ -15,7 +15,7 @@
 using std::string;
 using std::to_string;
 
-void LifeSearch();
+void LifeSearch_Set();
 int CountNeighbor(int x, int y);
 inline void LifeChange();
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 		usleep(delayTime * 1000);
 		if( shouldClearScreen )	CursorBack();
 		std::cout << i << "     " << std::endl;
-		LifeSearch();
+		LifeSearch_Set();
 		LifeChange();
 		LifePrint(shouldUseColor);
 	}
@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
 }
 
 // The core part of this program.
-void LifeSearch() {
+void LifeSearch_Set() {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
 			int countAlive = CountNeighbor(i, j);
