@@ -15,6 +15,7 @@
 using std::string;
 using std::to_string;
 
+bool isSameAllStatus();
 void LifeSearch_Set();
 int CountNeighbor(int x, int y);
 inline void LifeChange();
@@ -34,19 +35,27 @@ int main(int argc, char **argv) {
 	allocateArrays();
 
 	readField();
-	std::cout << "Start:" << std::endl;
-	LifePrint(shouldUseColor);
+	LifePrint("Start", shouldUseColor, false);
 	sleep(1);
 	// Main Loop
 	for(int i=1; i<=kaisuu; i++) {
-		usleep(delayTime * 1000);
-		if( shouldClearScreen )	CursorBack();
-		std::cout << i << "     " << std::endl;
 		LifeSearch_Set();
+		if( isSameAllStatus() ) {
+			std::cout << "No more changes. Stop." << std::endl;
+			break;
+		}
 		LifeChange();
-		LifePrint(shouldUseColor);
+		LifePrint(to_string(i), shouldUseColor, shouldClearScreen);
+		usleep(delayTime * 1000);
 	}
 	return 0;
+}
+
+bool isSameAllStatus() {
+	for(auto iterX: field)
+		for(auto iterY: iterX)
+			if( iterY.compareOwnStatus() == false )	return false;
+	return true;
 }
 
 // The core part of this program.
