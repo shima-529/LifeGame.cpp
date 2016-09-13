@@ -1,33 +1,27 @@
 CC=c++
-# CFLAGS=-Wall -g -O2
 CFLAGS=-std=c++11 -g -O2
 PROG_NAME=lifegame
 OBJS=Cell.o init.o cellRW.o lifePrint.o main.o
+OBJDIR=./obj
+OBJS_FPATH=$(addprefix $(OBJDIR)/,$(OBJS))
 
-all: $(OBJS)
+all: $(OBJS_FPATH)
 	$(CC) $^ -o $(PROG_NAME)
 	@cat README
 
+$(OBJDIR)/%.o: %.cpp
+	@if [ ! -d "$(OBJDIR)" ]; then \
+		mkdir "$(OBJDIR)"; \
+		echo "Created directory: $(OBJDIR)"; \
+		fi
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: love clean allclean
 love:
 	@echo "Erotic!"
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS_FPATH)
 
 allclean:
-	$(RM) $(OBJS) $(PROG_NAME)
-
-main.o: main.cpp
-	$(CC) -c $(CFLAGS) $^
-
-Cell.o: Cell.cpp
-	$(CC) -c $(CFLAGS) $^
-
-init.o: init.cpp
-	$(CC) -c $(CFLAGS) $^
-
-cellRW.o: cellRW.cpp
-	$(CC) -c $(CFLAGS) $^
-
-lifePrint.o: lifePrint.cpp
-	$(CC) -c $(CFLAGS) $^
+	$(RM) $(OBJS_FPATH) $(PROG_NAME)
