@@ -1,6 +1,10 @@
-
 LIFE GAME
 This emurates the process of life.
+
+Requirement:
+	- C++11 build environment
+	- Terminal supporting ANSI Color(optional)
+
 Usage:
 	./lifegame < field.txt
 You can execute this by a redirection.
