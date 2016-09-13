@@ -6,9 +6,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unistd.h>
 #include "h/init"
 #include "h/globalVal"
-#include "h/system"
 #include "h/cellRW"
 #include "h/lifePrint"
 

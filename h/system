@@ -1,8 +1,0 @@
-#pragma once
-#ifdef _CONSOLE
-#include <windows.h>
-#define usleep(x) Sleep((x)/1000)
-#define sleep(x) Sleep(x)
-#else
-#include <unistd.h>
-#endif
