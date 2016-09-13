@@ -20,18 +20,19 @@ string convertToPrintText(Cell target, bool isColor) {
 		return "\033[4" + to_string(static_cast<int>(ANSI_Color::WHITE)) + "m" + " ";
 }
 
-void LifePrint(bool isColor) {
+void LifePrint(string str, bool isColor, bool isCurBack) {
+	const static string TO_BACKWARD_ONE_LINE = "\033[A";
+	if( isCurBack )
+		for(int i=0; i<N+1; i++) {
+			std::cout << TO_BACKWARD_ONE_LINE;
+		}
+
+	std::cout << str << ":     " << std::endl;
+
 	for(auto &iterX: field) {
 		for(auto &iterY: iterX) {
 			std::cout << convertToPrintText(iterY, isColor) << " ";
 		}
 		std::cout << "\033[49m" << std::endl;
 	}
-}
-
-void CursorBack() {
-	const static string TO_BACKWARD_ONE_LINE = "\033[A";
-	for(int i=0; i<N+1; i++) {
-			std::cout << TO_BACKWARD_ONE_LINE;
-		}
 }

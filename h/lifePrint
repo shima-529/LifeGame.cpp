@@ -2,5 +2,4 @@ using std::string;
 using std::to_string;
 
 string convertToPrintText(Cell target, bool isColor);
-void LifePrint(bool isColor);
-void CursorBack();
+void LifePrint(string str, bool isColor, bool isCurBack);
