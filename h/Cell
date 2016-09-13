@@ -3,16 +3,13 @@ class Cell {
 	private:
 		bool status;
 		bool nextStatus;
-		/* Cell *neighbor[8]; */
 
 	public:
 		Cell();
 		bool getStatus();
 		bool getNextStatus();
-		/* Cell *getNeighbor(int idx); */
 		void setStatus(bool param);
 		void setNextStatus(bool p);
-		/* void setNeighbor(int idx, Cell *dest); */
 
 		void goToNextStep();
 		bool compareOwnStatus();
