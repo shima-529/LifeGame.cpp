@@ -14,7 +14,7 @@
 #include "h/lifePrint"
 
 void signalHandler(int param) {
-	std::cerr << std::endl << "Terminated by Ctrl-C." << std::endl;
+	std::cerr << std::endl << "Program terminated by Ctrl-C." << std::endl;
 	std::cout << "\033[49m";
 	exit(1);
 }
