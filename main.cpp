@@ -1,6 +1,6 @@
 /* main
  * contains funcs which constitutes the main part.
- * 
+ * On error, funcs on other files detect it.
  * 
  */
 #include <iostream>
