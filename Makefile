@@ -1,7 +1,7 @@
 CC         = c++
 CFLAGS     = -std=c++11 -g -O2
 PROG_NAME  = lifegame
-OBJS       = Cell.o init.o cellRW.o lifePrint.o main.o
+OBJS       = Cell.o init.o cellRW.o lifePrint.o sigInterrupt.o main.o
 OBJDIR     = ./obj
 OBJS_FPATH = $(addprefix $(OBJDIR)/,$(OBJS))
 INCLUDE    = -I ./h
@@ -13,7 +13,6 @@ all: $(OBJS_FPATH)
 $(OBJDIR)/%.o: %.cpp
 	if [ ! -d "$(OBJDIR)" ]; then \
 		mkdir "$(OBJDIR)"; \
-		echo "Created directory: $(OBJDIR)"; \
 		fi
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
