@@ -11,7 +11,7 @@ all: $(OBJS_FPATH)
 	@cat README
 
 $(OBJDIR)/%.o: %.cpp
-	@if [ ! -d "$(OBJDIR)" ]; then \
+	if [ ! -d "$(OBJDIR)" ]; then \
 		mkdir "$(OBJDIR)"; \
 		echo "Created directory: $(OBJDIR)"; \
 		fi
