@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 #include "h/extern"
 
 void readHeaderSettings() {
@@ -26,9 +27,15 @@ void allocateArrays() {
 }
 
 void readFieldInfo() {
-	for(int i=0; i<dataSet; i++) {
+	for(int i=1; i<=dataSet; i++) {
 		int x_setTrue, y_setTrue;
 		std::cin >> x_setTrue >> y_setTrue;
-		field.at(x_setTrue).at(y_setTrue).setStatus(true);
+		try {
+			field.at(x_setTrue).at(y_setTrue).setStatus(true);
+		} catch(std::out_of_range &ex) {
+			std::cout << "Wrong designation found on input " << i << "." << std::endl;
+			std::cout << "Program terminated." << std::endl;
+			exit(1);
+		}
 	}
 }
