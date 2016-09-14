@@ -8,19 +8,14 @@
 #include <vector>
 #include <unistd.h>
 #include <signal.h>
+#include "h/sigInterrupt"
 #include "h/init"
 #include "h/globalVal"
 #include "h/cellRW"
 #include "h/lifePrint"
 
-void signalHandler(int param) {
-	std::cerr << std::endl << "Program terminated by Ctrl-C." << std::endl;
-	std::cout << "\033[49m";
-	exit(1);
-}
-
-bool isAllStatusSame();
 void iterateChange_storeAsNextStatus();
+bool isAllStatusSame();
 int countAliveNumAround(int x, int y);
 inline void applyChange();
 
@@ -56,13 +51,6 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
-bool isAllStatusSame() {
-	for(auto iterX: field)
-		for(auto iterY: iterX)
-			if( iterY.compareOwnStatus() == false )	return false;
-	return true;
-}
-
 // The core part of this program.
 void iterateChange_storeAsNextStatus() {
 	for(int i=0; i<N; i++) {
@@ -70,10 +58,17 @@ void iterateChange_storeAsNextStatus() {
 			int countAlive = countAliveNumAround(i, j);
 			if( field.at(i).at(j).getStatus() == true && (countAlive == 2 || countAlive == 3) )
 				field.at(i).at(j).setNextStatus(true);
-			else if( field.at(i).at(j).getStatus() == false && countAlive == 3) 
+			else if( field.at(i).at(j).getStatus() == false && countAlive == 3)
 				field.at(i).at(j).setNextStatus(true);
 		}
 	}
+}
+
+bool isAllStatusSame() {
+	for(auto iterX: field)
+		for(auto iterY: iterX)
+			if( iterY.compareOwnStatus() == false )	return false;
+	return true;
 }
 
 int countAliveNumAround(int x, int y) {
