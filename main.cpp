@@ -22,15 +22,11 @@ inline void applyChange();
 int main(int argc, char **argv) {
 	signal(SIGINT, signalHandler);
 	std::vector<string> v(argv, argv + argc);
-	std::cout << "==========================================" << std::endl; //{{{
+	std::cout << "==========================================" << std::endl;
 	std::cout << "             L I F E  G A M E             " << std::endl;
 	std::cout << " Please input field length and loop times." << std::endl;
 	std::cout << " Redirection from txt file is recommended." << std::endl;
 	std::cout << "==========================================" << std::endl;
-	if( argc > 1 && v[1].find("h") != NOT_FOUND ){
-		std::cout << "with 'manual' option, steps will not proceed until RETURN key is pressed.\n";
-		return 0;
-	} //}}}
 	readHeaderSettings();
 	allocateArrays();
 	readFieldInfo();
