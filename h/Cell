@@ -1,4 +1,3 @@
-#pragma once
 class Cell {
 	private:
 		bool status;

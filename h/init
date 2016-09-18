@@ -1,5 +1,4 @@
 #pragma once
-#include "Cell"
 void readHeaderSettings();
 void allocateArrays();
 void readFieldInfo();

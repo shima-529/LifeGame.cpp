@@ -1,4 +1,3 @@
-#pragma once
 #include <vector>
 #include "Cell"
 std::vector< std::vector<Cell> > field;

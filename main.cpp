@@ -10,7 +10,7 @@
 #include <signal.h>
 #include "h/sigInterrupt"
 #include "h/init"
-#include "h/globalVal"
+#include "h/global"
 #include "h/cellRW"
 #include "h/lifePrint"
 

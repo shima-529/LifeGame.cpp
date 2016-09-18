@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "h/extern"
+#include "h/global"
 
 enum class ANSI_Color {
 	BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE,

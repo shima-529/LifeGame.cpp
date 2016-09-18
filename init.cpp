@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
-#include "h/extern"
+#include "h/global"
 
 void readHeaderSettings() {
 	int contZeroCount = 0;

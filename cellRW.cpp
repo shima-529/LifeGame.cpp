@@ -5,7 +5,7 @@
  */
 #include <vector>
 #include <stdexcept>
-#include "h/extern"
+#include "h/global"
 
 bool cellRead(const int x, const int y) {
 	try {
