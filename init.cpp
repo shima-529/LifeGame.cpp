@@ -7,11 +7,12 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include "h/Cell"
 #include "h/global"
 
 void readHeaderSettings() {
 	int contZeroCount = 0;
-	std::cin >> N >> repeatNum >> delayTime >> dataSet >> shouldClearScreen >> shouldUseColor;
+	std::cin >> Cell::N >> Cell::repeatNum >> Cell::delayTime >> Cell::dataSet >> Cell::shouldClearScreen >> Cell::shouldUseColor;
 	while( contZeroCount != 2 ) {	// check whether '0' is set 2 times continuously, i.e. start of the input of field
 		std::string streamLine;
 		std::cin >> streamLine;
@@ -21,13 +22,13 @@ void readHeaderSettings() {
 }
 
 void allocateArrays() {
-	field.resize(N);
-	for(int i=0; i<N; i++)
-		field.at(i).resize(N);
+	field.resize(Cell::N);
+	for(int i=0; i<Cell::N; i++)
+		field.at(i).resize(Cell::N);
 }
 
 void readFieldInfo() {
-	for(int i=1; i<=dataSet; i++) {
+	for(int i=1; i<=Cell::dataSet; i++) {
 		int x_setTrue, y_setTrue;
 		std::cin >> x_setTrue >> y_setTrue;
 		try {

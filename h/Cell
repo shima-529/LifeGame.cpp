@@ -4,6 +4,12 @@ class Cell {
 		bool nextStatus;
 
 	public:
+		static int N;
+		static int repeatNum;
+		static int delayTime;
+		static int dataSet;
+		static bool shouldClearScreen;
+		static bool shouldUseColor;
 		Cell();
 		bool getStatus();
 		bool getNextStatus();

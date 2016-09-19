@@ -8,9 +8,10 @@
 #include <vector>
 #include <unistd.h>
 #include <signal.h>
+#include "h/Cell"
+#include "h/global"
 #include "h/sigInterrupt"
 #include "h/init"
-#include "h/global"
 #include "h/cellRW"
 #include "h/lifePrint"
 
@@ -31,26 +32,26 @@ int main(int argc, char **argv) {
 	allocateArrays();
 	readFieldInfo();
 
-	LifePrint("Start", shouldUseColor);
+	LifePrint("Start", Cell::shouldUseColor);
 	sleep(1);
 	// Main Loop
-	for(int i=1; i<=repeatNum; i++) {
+	for(int i=1; i<=Cell::repeatNum; i++) {
 		iterateChange_storeAsNextStatus();
 		if( isAllStatusSame() ) {
 			std::cout << std::endl << "No more changes. Stop." << std::endl;
 			break;
 		}
 		applyChange();
-		LifePrint(to_string(i), shouldUseColor, shouldClearScreen);
-		usleep(delayTime * 1000);
+		LifePrint(to_string(i), Cell::shouldUseColor, Cell::shouldClearScreen);
+		usleep(Cell::delayTime * 1000);
 	}
 	return 0;
 }
 
 // The core part of this program.
 void iterateChange_storeAsNextStatus() {
-	for(int i=0; i<N; i++) {
-		for(int j=0; j<N; j++) {
+	for(int i=0; i<Cell::N; i++) {
+		for(int j=0; j<Cell::N; j++) {
 			int countAlive = countAliveNumAround(i, j);
 			if( field.at(i).at(j).getStatus() == true && (countAlive == 2 || countAlive == 3) )
 				field.at(i).at(j).setNextStatus(true);

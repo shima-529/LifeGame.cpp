@@ -4,6 +4,14 @@
  * 
  */
 #include "h/Cell"
+
+int Cell::N;
+int Cell::repeatNum;
+int Cell::delayTime;
+int Cell::dataSet;
+bool Cell::shouldClearScreen;
+bool Cell::shouldUseColor;
+
 Cell::Cell() {
 	status = false;
 	nextStatus = false;

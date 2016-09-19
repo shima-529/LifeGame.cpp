@@ -1,4 +1,4 @@
-CC         = c++
+CC         = g++
 CFLAGS     = -std=c++11 -g -O2
 PROG_NAME  = lifegame
 OBJS       = Cell.o init.o cellRW.o lifePrint.o sigInterrupt.o global.o main.o

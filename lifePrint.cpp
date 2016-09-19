@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "h/Cell"
 #include "h/global"
 
 enum class ANSI_Color {
@@ -20,7 +21,7 @@ std::string convertToPrintText(Cell target, bool isColor) {
 void LifePrint(std::string str, bool isColor, bool isCurBack) {
 	const static std::string TO_BACKWARD_ONE_LINE = "\033[A";
 	if( isCurBack )
-		for(int i=0; i<N+1; i++) {
+		for(int i=0; i<Cell::N+1; i++) {
 			std::cout << TO_BACKWARD_ONE_LINE;
 		}
 
