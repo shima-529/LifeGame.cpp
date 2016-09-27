@@ -4,6 +4,7 @@
  * 
  */
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include <unistd.h>
@@ -22,15 +23,24 @@ inline void applyChange();
 
 int main(int argc, char **argv) {
 	signal(SIGINT, signalHandler);
+	if( argc != 2 ) {
+		std::cout << "Error: designate a filename to the 1st parameter." << std::endl;
+		exit(1);
+	}
 	std::vector<string> v(argv, argv + argc);
+	std::ifstream ifs(argv[1]);
+	ifs.exceptions(std::ifstream::eofbit);
+	if( ifs.fail() ) {
+		std::cout << "Error: failed to read the file." << std::endl;
+	}
 	std::cout << "==========================================" << std::endl;
 	std::cout << "             L I F E  G A M E             " << std::endl;
-	std::cout << " Please input field length and loop times." << std::endl;
-	std::cout << " Redirection from txt file is recommended." << std::endl;
+	// std::cout << " Please input field length and loop times." << std::endl;
+	// std::cout << " Redirection from txt file is recommended." << std::endl;
 	std::cout << "==========================================" << std::endl;
-	readHeaderSettings();
+	readHeaderSettings(ifs);
 	allocateArrays();
-	readFieldInfo();
+	readFieldInfo(ifs);
 
 	LifePrint("Start", Cell::shouldUseColor);
 	sleep(1);

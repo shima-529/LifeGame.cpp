@@ -1,4 +1,4 @@
 #pragma once
-void readHeaderSettings();
+void readHeaderSettings(std::ifstream &ifs);
 void allocateArrays();
-void readFieldInfo();
+void readFieldInfo(std:: ifstream &ifs);
