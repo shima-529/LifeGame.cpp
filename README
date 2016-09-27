@@ -6,6 +6,6 @@ Requirement:
 	- Terminal supporting ANSI Color(optional)
 
 Usage:
-	./lifegame < field.txt
-You can execute this by a redirection.
+	./lifegame field.txt
+Please designate the filename to the 1st argument.
 
